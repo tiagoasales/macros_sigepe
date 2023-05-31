@@ -1,7 +1,7 @@
 import MacrosClasses
 import pandas as pd
 
-df = pd.read_csv('aposentados_02.csv', dtype=str)
+df = pd.read_csv('aposentados_07.csv', dtype=str)
 
 df = df.fillna(' ')
 
@@ -42,7 +42,8 @@ for index, row in df.iterrows():
     #Acesso.Tab(1)
 
     Acesso.Digita(row['grupo_sanguineo'])
-    Acesso.Tab(1)
+    if len(row['grupo_sanguineo']) < 5:
+        Acesso.Tab(1)
 
     Acesso.Digita(row['nome_pai'])
     Acesso.Tab(1)
@@ -74,8 +75,7 @@ for index, row in df.iterrows():
     #Acesso.Tab(1)
 
     Acesso.Digita(row['id_tipo_nacionalidade'])
-
-
+    
     Acesso.ViraTelaSiafiTecla('ENTER')
 
     ##### SEGUNDA TELA #######
@@ -153,7 +153,10 @@ for index, row in df.iterrows():
 
     telefone = '33421570'
     Acesso.Digita(row['telefone'])
-    Acesso.Tab(2)
+    if len(row['telefone']) == 9:
+        Acesso.Tab(1)
+    else :
+        Acesso.Tab(2)
 
     celularDDD = '81'
     Acesso.Digita(row['codigo_area_celular'])

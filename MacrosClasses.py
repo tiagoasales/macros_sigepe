@@ -251,7 +251,7 @@ class janela3270:
     dlg.type_keys(texto, with_spaces=True)
     time.sleep(self.delay)
 
-  def __Enter__(self):
+  def Enter(self):
     global dlg
     time.sleep(self.delay)
     dlg.type_keys('{ENTER}')
