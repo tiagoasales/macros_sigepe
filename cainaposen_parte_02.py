@@ -1,7 +1,7 @@
 import MacrosClasses
 import pandas as pd
 
-df = pd.read_csv('aposentados_02.csv', dtype=str)
+df = pd.read_csv('cainaposen_b_04.csv', dtype=str)
 
 df = df.fillna(' ')
 
@@ -15,58 +15,82 @@ for index, row in df.iterrows():
 
     Acesso.ViraTelaSiafiTecla('ENTER')
 
-    Acesso.Digita('02256622720')
+    Acesso.Digita(row['cpf'])
 
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')
 
     # Fudamento Legal
-    Acesso.Digita('500115')
+    Acesso.Digita(row['fundamento_legal'])
+
 
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')
 
     # Inicio da Aposentadoria
-    Acesso.Digita('24NOV1994')
+    Acesso.Digita(row['inicio_aposentadoria'])
 
     # Inicio do ultimo Provento -> colocar a data do cargo da pessoa
-    Acesso.Digita('18SET2008')
+    Acesso.Digita('02JUN2023')
+
 
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')
 
+    #Acesso.Digita('X')
+
+    retorno = Acesso.PegaTextoSiafi(Tela, 10, 68, 10, 77)
+    if (retorno.strip() == 'CERRADAS'):
+        print('As matriculas existentes nao podem ser utilizadas no momento. Para dar nova matricula para o servidor, contate o gestor do sistema')
+        break
+
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')
 
-    Acesso.Digita('617001')
+    # CODIGO DO CARGO DO APOSENTADO
+    # 617001 - OFICIAL DE INTELIGENCIA
+    # 617002 - AGENTE DE INTELIGENCIA
+    Acesso.Digita(row['cargo'])
 
+    # JORNADA DE TRABALHO (valor padrão)
     Acesso.Digita('40')
 
+    # SENTENCA JUDICIAL (valor padrão)
     Acesso.Digita('N')
 
-    Acesso.Digita('030')
+    # NUMERADOR PROPORCIONALIDADE
+    #Acesso.Digita(row['numerador'])
 
-    Acesso.Digita('035')
-
-    Tela = Acesso.ViraTelaSiafiTecla('ENTER')
-
-    Acesso.Digita('NS')
-    Acesso.Tab(1)
-
-    Acesso.Digita('S')
-    Acesso.Tab(1)
-
-    Acesso.Digita('I')
-    Acesso.Tab(1)
-
-    Acesso.Digita('0')
+    # DENOMINADOR PROPORCIONALIDADE
+    #Acesso.Digita(row['denominador'])
 
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')
+
+    # NIVEL DA CARREIRA
+    Acesso.Digita(row['nivel'])
+    Acesso.Tab(1)
+
+    # CLASSE DA CARREIRA
+    Acesso.Digita(row['classe'])
+    Acesso.Tab(1)
+
+    # PADRAO DA CARREIRA
+    Acesso.Digita(row['padrao'])
+    Acesso.Tab(1)
+
+    # ANUENIO
+    Acesso.Digita(row['anuenio'])
+    #Acesso.Digita(17)
+
+    Tela = Acesso.ViraTelaSiafiTecla('ENTER')
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')
 
+    # CODIGO DO ORGAO
+    # 20114 = ABIN
     Acesso.Digita('20114')
 
     # A UORG 001 VAI SER A UNIDADE DOS APOSENTADOS NO SIGEPE
     Acesso.Digita('001')
     Acesso.Tab(2)
 
-    Acesso.Digita('01180010168/1993-0')
+    # NUMERO DO PROCESSO DE APOSENTADORIA
+    Acesso.Digita(row['processo'])
 
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')
@@ -74,12 +98,14 @@ for index, row in df.iterrows():
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')
 
-    Acesso.Digita('PORT 92/1994 ABIN, DE 24/11/1994, DOU 227 DE 01/12/1994')
+    # TEXTO COM OS DADOS DA PORTARIA DE APOSENTADORIA
+    Acesso.Digita(row['documento_legal'])
 
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')
 
+    # PERGUNTA DE CONFIRMACAO
     Acesso.Digita('S')
 
-    Tela = Acesso.ViraTelaSiafiTecla('ENTER')
+    #Tela = Acesso.ViraTelaSiafiTecla('ENTER')
 
     break

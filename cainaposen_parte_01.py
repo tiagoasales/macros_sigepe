@@ -1,7 +1,7 @@
 import MacrosClasses
 import pandas as pd
 
-df = pd.read_csv('aposentados_07.csv', dtype=str)
+df = pd.read_csv('cainaposen_a_abr.csv', dtype=str)
 
 df = df.fillna(' ')
 
@@ -37,7 +37,6 @@ for index, row in df.iterrows():
     Acesso.Digita(row['nome'])
     Acesso.Tab(1)
 
-    sexo = 'M'
     Acesso.Digita(row['sexo'])
     #Acesso.Tab(1)
 
@@ -57,7 +56,6 @@ for index, row in df.iterrows():
     Acesso.Digita(row['naturalidade_uf'])
     #Acesso.Tab(1)
 
-    escolaridade = '10'
     Acesso.Digita(row['id_tipo_escolaridade'])
     #Acesso.Tab(1)
 
@@ -119,57 +117,45 @@ for index, row in df.iterrows():
 
     ##### TERCEIRA TELA #######
 
-    logradouro = 'RUA PROFESORA ENEIDA RABELO'
     Acesso.Digita(row['endereco_logradouro'])
     Acesso.Tab(1)
 
-    numero = '856'
     Acesso.Digita(row['endereco_numero'])
     Acesso.Tab(1)
 
-    complemento = 'AP 301'
     Acesso.Digita(row['endereco_complemento'])
     Acesso.Tab(1)
 
-    bairro = 'CANDEIAS'
     Acesso.Digita(row['bairro'])
     Acesso.Tab(1)
 
-    municipio = 'JABOATAO DOS GUARARAPES'
     Acesso.Digita(row['cidade'])
     Acesso.Tab(1)
 
-    municipioUf = 'PE'
     Acesso.Digita(row['uf'])
     Acesso.Tab(1)
 
-    cep = '54440310'
     Acesso.Digita(row['cep'])
     Acesso.Tab(1)
 
-    telefoneDDD = '81'
     Acesso.Digita(row['codigo_area_telefone'])
     Acesso.Tab(1)
 
-    telefone = '33421570'
     Acesso.Digita(row['telefone'])
     if len(row['telefone']) == 9:
         Acesso.Tab(1)
     else :
         Acesso.Tab(2)
 
-    celularDDD = '81'
     Acesso.Digita(row['codigo_area_celular'])
     Acesso.Tab(1)
 
-    celular = '999966051'
     Acesso.Digita(row['celular'])
     if row['celular'] == ' ':
         Acesso.Tab(3)
     else :
         Acesso.Tab(2)
 
-    email = 'lcjatoba@hotmail.com'
     Acesso.Digita(row['email'])
 
     Acesso.ViraTelaSiafiTecla('ENTER')
@@ -180,11 +166,9 @@ for index, row in df.iterrows():
     Acesso.Digita(contaTipo)
     #Acesso.Tab(1)
 
-    bancoAgencia = '104/01580/6'
     Acesso.Digita(row['banco_agencia'])
     #Acesso.Tab(2)
 
-    contaNumero = '0000108761'
     Acesso.Digita(row['conta_corrente'])
     Acesso.Tab(1)
 

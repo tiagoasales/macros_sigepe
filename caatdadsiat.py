@@ -1,7 +1,7 @@
 import MacrosClasses
 import pandas as pd
 
-df = pd.read_csv('aposentados_02.csv', dtype=str)
+df = pd.read_csv('caatdadsia_01.csv', dtype=str)
 
 df = df.fillna(' ')
 
@@ -16,47 +16,47 @@ for index, row in df.iterrows():
     Acesso.ViraTelaSiafiTecla('ENTER')
 
     # MATRICULA SIAPECAD
-    Acesso.Digita('02432499')
+    Acesso.Digita(row['matricula_siapecad'])
 
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')
 
     # DATA DE INGRESSO NO ORGAO
-    Acesso.Digita('15DEZ1975')
+    Acesso.Digita(row['adminissao'])
 
     # OCORRENCIA DE ADMISSAO
     # 01001 - ADMISSAO POR CONCURSO PUBLICO
     # 01003 - ADMISSAO SEM CONCURSO PUBLICO
-    Acesso.Digita('01003')
+    Acesso.Digita(row['ocorrencia_admissao'])
 
     # TIPO DO DIPLOMA LEGAL
     # 04 - PORTARIA
-    Acesso.Digita('04')
+    Acesso.Digita(row['diploma_legal'])
 
     # NUMERO DA PORTARIA
-    Acesso.Digita('252') 
+    Acesso.Digita(row['numero_portaria']) 
     Acesso.Tab(1)   
 
     # DATA DA PORTARIA -> COLOCAR A MESMA DE INGRESSO NO ORGAO, POIS TEM APOSENTADO QUE ENTROU ANTES DA PORTARIA
-    Acesso.Digita('15DEZ1975')
+    Acesso.Digita(row['adminissao'])
 
     # DATA INGRESSO NO SERVICO PUBLICO -> VAMOS COLOCAR A MESMA DO ORGAO
-    Acesso.Digita('15DEZ1975')
+    Acesso.Digita(row['ingresso_publico'])
 
     # OCORRENCIA DE ADMISSAO DE INGRESSO NO SERVICO PUBLICO
     # 01001 - ADMISSAO POR CONCURSO PUBLICO
     # 01003 - ADMISSAO SEM CONCURSO PUBLICO
-    Acesso.Digita('01003')
+    Acesso.Digita(row['ocorrencia_admissao'])
 
     # TIPO DO DIPLOMA LEGAL
     # 04 - PORTARIA
-    Acesso.Digita('04')
+    Acesso.Digita(row['diploma_legal'])
 
     # NUMERO DA PORTARIA DE INGRESSO NO SERVICO PUBLICO
-    Acesso.Digita('252') 
+    Acesso.Digita(row['numero_portaria']) 
     Acesso.Tab(1)   
 
     # DATA DA PORTARIA DE INGRESSO NO SERVICO PUBLICO
-    Acesso.Digita('15DEZ1975')
+    Acesso.Digita(row['ingresso_publico'])
 
     #Tela = Acesso.ViraTelaSiafiTecla('ENTER')
     Acesso.Enter()
@@ -66,6 +66,6 @@ for index, row in df.iterrows():
     # CONFIRMACAO
     Acesso.Digita('S')
 
-    Tela = Acesso.ViraTelaSiafiTecla('ENTER')
+    #Tela = Acesso.ViraTelaSiafiTecla('ENTER')
 
     break
