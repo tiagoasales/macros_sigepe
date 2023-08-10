@@ -92,18 +92,25 @@ for index, row in df.iterrows():
     #Acesso.Tab(1)
 
     Acesso.Digita(row['eleitor'])
-    #Acesso.Tab(1)
+    if len(row['eleitor']) == 1:
+        Acesso.Tab(1)
 
     Acesso.Digita(row['el_uf'])
-    #Acesso.Tab(1)
+    if len(row['eleitor']) == 1:
+        Acesso.Tab(1)
 
     Acesso.Digita(row['zona_eleitoral'])
-    #Acesso.Tab(1)
+    if len(row['eleitor']) == 1:
+        Acesso.Tab(1)
 
     Acesso.Digita(row['secao_eleitoral'])
-    #Acesso.Tab(4)
+    if len(row['eleitor']) == 1:
+        Acesso.Tab(1)
     
     Acesso.Digita(row['data_titulo_eleitoral'])
+    if len(row['eleitor']) == 1:
+        Acesso.Tab(1)
+    
     Acesso.Tab(3)
 
     carteiraDigital = 'N'
