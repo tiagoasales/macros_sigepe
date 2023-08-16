@@ -1,7 +1,7 @@
 import MacrosClasses
 import pandas as pd
 
-df = pd.read_csv('cainaposen_a_abr.csv', dtype=str)
+df = pd.read_csv('cainaposen_a_abr.csv', dtype=str, nrows=1)
 
 df = df.fillna(' ')
 
