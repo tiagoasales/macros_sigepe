@@ -16,7 +16,7 @@ robo.write('CAATCONPSS')
 robo.press('enter')
 time.sleep(0.5)
 robo.press('tab', presses=3)
-robo.write('15373070106')
+robo.write('34967222749')
 robo.press('enter')
 time.sleep(1)
 
@@ -39,7 +39,8 @@ for ano in anos:
     robo.press('enter')
     time.sleep(1)
 
-    
+    mes = 0
+
     if int(ano) == 1994:
         mes_anterior = 7
     else:        
@@ -89,7 +90,7 @@ for ano in anos:
             robo.write(row['valor'])
             robo.press('tab', presses=3) 
 
-    if int(ano) == ultimo_ano:
+    if int(ano) == ultimo_ano and mes != 12:
         robo.press('tab')
 
     robo.press('enter')
