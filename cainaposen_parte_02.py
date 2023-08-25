@@ -29,7 +29,7 @@ for index, row in df.iterrows():
     Acesso.Digita(row['inicio_aposentadoria'])
 
     # Inicio do ultimo Provento -> colocar a data do cargo da pessoa
-    Acesso.Digita('02JUN2023')
+    Acesso.Digita(row['inicio_aposentadoria'])
 
 
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')
@@ -55,10 +55,10 @@ for index, row in df.iterrows():
     Acesso.Digita('N')
 
     # NUMERADOR PROPORCIONALIDADE
-    #Acesso.Digita(row['numerador'])
+    Acesso.Digita(row['numerador'])
 
     # DENOMINADOR PROPORCIONALIDADE
-    #Acesso.Digita(row['denominador'])
+    Acesso.Digita(row['denominador'])
 
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')
 
