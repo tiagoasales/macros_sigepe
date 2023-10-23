@@ -1,7 +1,7 @@
 import MacrosClasses
 import pandas as pd
 
-df = pd.read_csv('cainaposen_b_04.csv', dtype=str, nrows=1)
+df = pd.read_csv('cainaposen_b_ago_01.csv', dtype=str, nrows=1)
 
 df = df.fillna(' ')
 
@@ -55,10 +55,12 @@ for index, row in df.iterrows():
     Acesso.Digita('N')
 
     # NUMERADOR PROPORCIONALIDADE
-    Acesso.Digita(row['numerador'])
+    if row['numerador'] != row['denominador']:
+        Acesso.Digita(row['numerador'])
 
     # DENOMINADOR PROPORCIONALIDADE
-    Acesso.Digita(row['denominador'])
+    if row['numerador'] != row['denominador']:
+        Acesso.Digita(row['denominador'])
 
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')
 

@@ -1,7 +1,7 @@
 import MacrosClasses
 import pandas as pd
 
-df = pd.read_csv('cainaposen_a_abr.csv', dtype=str, nrows=1)
+df = pd.read_csv('cainaposen_a_set_01.csv', dtype=str, nrows=1)
 
 df = df.fillna(' ')
 
@@ -184,6 +184,7 @@ for index, row in df.iterrows():
     Acesso.ViraTelaSiafiTecla('PF8')
 
     Acesso.ViraTelaSiafiTecla('ENTER')
+    break
 
     confirmaInclusao = 'S'
     Acesso.Digita(confirmaInclusao)
