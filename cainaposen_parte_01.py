@@ -1,7 +1,7 @@
 import MacrosClasses
 import pandas as pd
 
-df = pd.read_csv('cainaposen_a_set_01.csv', dtype=str, nrows=1)
+df = pd.read_csv('cainaposen_a_jan_01.csv', dtype=str, nrows=1)
 
 df = df.fillna(' ')
 
@@ -139,8 +139,14 @@ for index, row in df.iterrows():
     Acesso.Digita(row['cidade'])
     Acesso.Tab(1)
 
+
     Acesso.Digita(row['uf'])
-    Acesso.Tab(1)
+    if len(row['uf']) == 1:
+        Acesso.Tab(1)
+    
+    Acesso.Digita(row['id_pais'])
+    if len(row['id_pais']) != 3:        
+        Acesso.Tab(1)
 
     Acesso.Digita(row['cep'])
     Acesso.Tab(1)
@@ -184,7 +190,6 @@ for index, row in df.iterrows():
     Acesso.ViraTelaSiafiTecla('PF8')
 
     Acesso.ViraTelaSiafiTecla('ENTER')
-    break
 
     confirmaInclusao = 'S'
     Acesso.Digita(confirmaInclusao)
