@@ -1,7 +1,7 @@
 import MacrosClasses
 import pandas as pd
 
-df = pd.read_csv('cainaposen_b_ago_01.csv', dtype=str, nrows=1)
+df = pd.read_csv('cainaposen_b_montao_02.csv', dtype=str, nrows=1)
 
 df = df.fillna(' ')
 
@@ -29,8 +29,7 @@ for index, row in df.iterrows():
     Acesso.Digita(row['inicio_aposentadoria'])
 
     # Inicio do ultimo Provento -> colocar a data do cargo da pessoa
-    Acesso.Digita(row['inicio_aposentadoria'])
-
+    Acesso.Digita('31OUT2023')
 
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')
 
@@ -55,12 +54,15 @@ for index, row in df.iterrows():
     Acesso.Digita('N')
 
     # NUMERADOR PROPORCIONALIDADE
-    if row['numerador'] != row['denominador']:
-        Acesso.Digita(row['numerador'])
+    if row['fundamento_legal'] != '500001':
+        if row['numerador'] != row['denominador']:
+            Acesso.Digita(row['numerador'])
 
-    # DENOMINADOR PROPORCIONALIDADE
-    if row['numerador'] != row['denominador']:
-        Acesso.Digita(row['denominador'])
+        # DENOMINADOR PROPORCIONALIDADE
+        if row['numerador'] != row['denominador']:
+            Acesso.Digita(row['denominador'])
+
+    break
 
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')
 
