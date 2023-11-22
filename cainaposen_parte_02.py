@@ -5,7 +5,7 @@ df = pd.read_csv('cainaposen_b_montao_02.csv', dtype=str, nrows=1)
 
 df = df.fillna(' ')
 
-Acesso = MacrosClasses.janela3270("Terminal 3270 - A - AWVAKJR7")
+Acesso = MacrosClasses.janela3270("Terminal 3270 - A - AWVAC46M")
 
 for index, row in df.iterrows():
 
@@ -60,9 +60,7 @@ for index, row in df.iterrows():
 
         # DENOMINADOR PROPORCIONALIDADE
         if row['numerador'] != row['denominador']:
-            Acesso.Digita(row['denominador'])
-
-    break
+            Acesso.Digita(row['denominador'])    
 
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')
 
