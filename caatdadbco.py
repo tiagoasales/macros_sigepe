@@ -4,42 +4,33 @@ import pandas as pd
 
 robo.PAUSE = 0.5
 
-df = pd.read_csv('caatdadbco.csv', dtype=str, nrows=1)
-
-cpf = df.iloc[0]['cpf']
-
-#robo.press("winleft")
-#robo.write("chrome")
-#robo.press("enter")
-#robo.write("https://esiape.sigepe.gov.br/")
-#robo.press("enter")
+df = pd.read_csv('caatdadbco.csv', dtype=str)
 
 robo.hotkey('alt', 'tab')
-# robo.write('CAATDADBCO')
-# robo.press('enter')
-# time.sleep(0.5)
-robo.write(cpf)
-robo.press('enter')
-time.sleep(1)
-
-robo.moveTo(1730, 480, duration = 0.5)
-robo.leftClick()
 
 for index, row in df.iterrows():
 
-    # apenas pra inicializar a combo inicial (sem isso não dá certo)
+    print('-------------------------------')
+    print('Iniciando: ', row['nome'])
+
+    robo.write(row['cpf'])
+    robo.press('enter')
     time.sleep(1)
-    robo.typewrite('01')
+
+    robo.moveTo(1730, 480, duration = 0.5)
+    robo.leftClick()
 
     time.sleep(1)
-    robo.typewrite('04')
+    robo.typewrite('04', interval=0.25)
     robo.typewrite('enter')
     robo.press('tab')
 
-    robo.typewrite(row['id_banco'])
+    time.sleep(1)
+    robo.typewrite(row['id_banco'], interval=0.2)
     robo.typewrite('enter')
     robo.press('tab')
 
+    time.sleep(1)
     agencia = row['agencia_banco'].split('-')[0]
     robo.typewrite(agencia)
     robo.press('tab')
@@ -53,11 +44,11 @@ for index, row in df.iterrows():
 
     robo.press('tab', presses=3)
 
-    robo.typewrite('01')
+    robo.typewrite('01', interval=0.15)
     robo.typewrite('enter')
     robo.press('tab')
 
-    robo.typewrite(row['id_banco'])
+    robo.typewrite(row['id_banco'], interval=0.2)
     robo.typewrite('enter')
     robo.press('tab')
 
@@ -72,19 +63,21 @@ for index, row in df.iterrows():
     robo.typewrite(row['conta_corrente'])
     robo.press('tab')
 
-    robo.press('tab', presses=2)
+    robo.press('tab', presses=2, interval=0.15)
     time.sleep(1)
     robo.press('enter')
 
-    time.sleep(1)
+    time.sleep(2)
     robo.moveTo(1795, 617, duration = 0.5)
     robo.leftClick()
 
-    time.sleep(1)
+    time.sleep(2)
     robo.press('enter')
 
-    time.sleep(1)
+    time.sleep(2)
     robo.press('enter')
 
     time.sleep(1)
     robo.press('backspace', presses=11)
+
+    print('finalizado com sucesso!')
