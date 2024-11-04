@@ -5,7 +5,7 @@ import pyperclip
 
 robo.PAUSE = 0.5
 
-df = pd.read_csv('caintas_kardec.csv', dtype=str, nrows=1)
+df = pd.read_csv('./input/caintas.csv', dtype=str, nrows=1)
 
 # troca todos os valores NaN por vazio
 df = df.fillna('')
@@ -66,19 +66,21 @@ for index, row in df.iterrows():
     # seleciona a Natureza Jurídica
     time.sleep(1)
     robo.write(row['cod_natureza_juridica'], interval=0.15)
-    robo.typewrite('enter')
-    robo.press('tab', presses=2)
+    robo.press('tab')
+    time.sleep(1)
+    robo.press('tab')
 
     # seleciona o Regime Juridico
     time.sleep(0.2)
     robo.write(row['cod_regime_juridico'], interval=0.25)
-    robo.typewrite('enter')
-    robo.press('tab', presses=3)
+    robo.press('tab')
+    time.sleep(1)
+    robo.press('tab', presses=2, interval=0.25)
 
     # seleciona a Atividade Externa
-    time.sleep(0.2)
+    time.sleep(1)
     robo.write(row['cod_atividade_externa'], interval=0.25)
-    robo.typewrite('enter')
+    robo.press('tab')
 
     # seleciona Regime Previdênciario
     # esse campo só aparece quando não é militar
@@ -93,22 +95,23 @@ for index, row in df.iterrows():
         robo.moveTo(1810, 745, duration = 0.1)
         robo.leftClick()
 
-    if row['cargo_efetivo'] == "S" or row['cargo_efetivo'] == "N":
-        time.sleep(0.2)
-        robo.moveTo(1435, 812, duration = 0.25)
-        robo.leftClick()
-        
-        if row['cargo_efetivo'] == 'S':
-            robo.press('down')
-        else:
-            robo.press('down', presses=2) 
-        
-        robo.typewrite('enter')
-        
-        robo.moveTo(1435, 812, duration = 0.1)
-        robo.leftClick()        
+#    if row['cargo_efetivo'] == "S" or row['cargo_efetivo'] == "N":
+#        time.sleep(0.2)
+#        robo.moveTo(1435, 812, duration = 0.25)
+#        robo.leftClick()
+#        
+#        if row['cargo_efetivo'] == 'S':
+#            robo.press('down')
+#        else:
+#            robo.press('down', presses=2) 
+#        
+#        robo.typewrite('enter')
+#        
+#        robo.moveTo(1435, 812, duration = 0.1)
+#        robo.leftClick()        
 
     if row['nit'] != '':
+        print('entrou nit')
         time.sleep(0.2)
         robo.moveTo(1548, 812, duration = 0.25)
         robo.leftClick()
@@ -118,7 +121,7 @@ for index, row in df.iterrows():
 
     # informa o numero do processo
     time.sleep(0.2)
-    robo.moveTo(1665, 812, duration = 0.25)
+    robo.moveTo(1205, 817, duration = 0.25)
     robo.leftClick()
     robo.write(row['numero_processo'])
 
