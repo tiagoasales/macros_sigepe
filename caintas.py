@@ -109,9 +109,9 @@ for index, row in df.iterrows():
 #        
 #        robo.moveTo(1435, 812, duration = 0.1)
 #        robo.leftClick()        
+    break
 
     if row['nit'] != '':
-        print('entrou nit')
         time.sleep(0.2)
         robo.moveTo(1548, 812, duration = 0.25)
         robo.leftClick()
@@ -124,6 +124,7 @@ for index, row in df.iterrows():
     robo.moveTo(1205, 817, duration = 0.25)
     robo.leftClick()
     robo.write(row['numero_processo'])
+
 
     if row['uf'] != '':
         time.sleep(0.2)

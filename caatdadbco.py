@@ -4,7 +4,7 @@ import pandas as pd
 
 robo.PAUSE = 0.5
 
-df = pd.read_csv('caatdadbco.csv', dtype=str)
+df = pd.read_csv('./input/caatdadbco_junho.csv', dtype=str)
 
 robo.hotkey('alt', 'tab')
 
@@ -17,10 +17,15 @@ for index, row in df.iterrows():
     robo.press('enter')
     time.sleep(1)
 
-    robo.moveTo(1730, 480, duration = 0.5)
+    #monitor serviço
+    #robo.moveTo(3180, 530, duration = 0.5)
+    
+    #ultra wide
+    robo.moveTo(2350, 600, duration = 0.5)
+    time.sleep(1)
     robo.leftClick()
 
-    time.sleep(1)
+    time.sleep(2)
     robo.typewrite('04', interval=0.25)
     robo.typewrite('enter')
     robo.press('tab')
@@ -37,12 +42,12 @@ for index, row in df.iterrows():
 
     digito = row['agencia_banco'].split('-')[1]
     robo.typewrite(digito)
+    time.sleep(1)
     robo.press('tab')
 
     robo.typewrite(row['conta_corrente'])
-    robo.press('tab')
 
-    robo.press('tab', presses=3)
+    robo.press('tab', presses=4, interval=0.15)
 
     robo.typewrite('01', interval=0.15)
     robo.typewrite('enter')
@@ -61,22 +66,17 @@ for index, row in df.iterrows():
     robo.press('tab')
 
     robo.typewrite(row['conta_corrente'])
-    robo.press('tab')
-
-    robo.press('tab', presses=2, interval=0.15)
-    time.sleep(1)
+    break
+    robo.press('tab', presses=3, interval=0.15)
     robo.press('enter')
 
     time.sleep(2)
-    robo.moveTo(1795, 617, duration = 0.5)
+    robo.moveTo(1340, 670, duration = 0.5)
     robo.leftClick()
 
     time.sleep(2)
     robo.press('enter')
-
-    time.sleep(2)
-    robo.press('enter')
-
+        
     time.sleep(1)
     robo.press('backspace', presses=11)
 

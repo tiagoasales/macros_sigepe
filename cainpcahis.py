@@ -2,7 +2,7 @@ import MacrosClasses
 import pandas as pd
 from datetime import datetime
 
-df = pd.read_csv('cainpcahis.csv', dtype=str, nrows=1)
+df = pd.read_csv('./input/cainpcahis.csv', dtype=str, nrows=1)
 
 df = df.fillna('')
 
@@ -76,14 +76,13 @@ for index, row in df.iterrows():
 
     # Servidor com Afastamento sem Remuneração
     Acesso.Digita('N')
+    #break
 
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')
 
     Acesso.Digita('x')
 
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')
-
-    # Tela = Acesso.ViraTelaSiafiTecla('ENTER')
 
     # Tabela do Cargo
     Acesso.Digita(row['tabela_cargo'])

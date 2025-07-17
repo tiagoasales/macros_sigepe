@@ -1,27 +1,25 @@
 import MacrosClasses
 import pandas as pd
 
-df = pd.read_csv('cainaposen_b_montao_02.csv', dtype=str, nrows=1)
+df = pd.read_csv('./input/cainaposen_junho_2025.csv', dtype=str, nrows=1)
 
 df = df.fillna(' ')
 
-Acesso = MacrosClasses.janela3270("Terminal 3270 - A - AWVAC46M")
+Acesso = MacrosClasses.janela3270("Terminal 3270 - A - AWVAKJR7")
 
 for index, row in df.iterrows():
 
-    Acesso.Tab(9)
+    #Acesso.Tab(8)
 
-    Acesso.Digita('>cainaposen')
+    #Acesso.Digita('>cainaposen')
 
-    Acesso.ViraTelaSiafiTecla('ENTER')
+    #Acesso.ViraTelaSiafiTecla('ENTER')
 
     Acesso.Digita(row['cpf'])
-
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')
 
     # Fudamento Legal
     Acesso.Digita(row['fundamento_legal'])
-
 
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')
 
@@ -29,11 +27,14 @@ for index, row in df.iterrows():
     Acesso.Digita(row['inicio_aposentadoria'])
 
     # Inicio do ultimo Provento -> colocar a data do cargo da pessoa
-    Acesso.Digita('31OUT2023')
+    Acesso.Digita('01JAN2025')
+    #break
 
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')
+    #break
 
     #Acesso.Digita('X')
+    Tela = Acesso.ViraTelaSiafiTecla('ENTER')
 
     retorno = Acesso.PegaTextoSiafi(Tela, 10, 68, 10, 77)
     if (retorno.strip() == 'CERRADAS'):
@@ -52,6 +53,7 @@ for index, row in df.iterrows():
 
     # SENTENCA JUDICIAL (valor padrão)
     Acesso.Digita('N')
+    #break
 
     # NUMERADOR PROPORCIONALIDADE
     if row['fundamento_legal'] != '500001':
@@ -63,6 +65,7 @@ for index, row in df.iterrows():
             Acesso.Digita(row['denominador'])    
 
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')
+    #break
 
     # NIVEL DA CARREIRA
     Acesso.Digita(row['nivel'])
@@ -79,6 +82,7 @@ for index, row in df.iterrows():
     # ANUENIO
     Acesso.Digita(row['anuenio'])
     #Acesso.Digita(17)
+    #break
 
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')

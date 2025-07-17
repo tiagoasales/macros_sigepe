@@ -1,7 +1,7 @@
 import MacrosClasses
 import pandas as pd
 
-df = pd.read_csv('cainaposen_a_jan_01.csv', dtype=str, nrows=1)
+df = pd.read_csv('./input/cainaposen01_julho.csv', dtype=str, nrows=1)
 
 df = df.fillna(' ')
 
@@ -9,11 +9,11 @@ Acesso = MacrosClasses.janela3270("Terminal 3270 - A - AWVAKJR7")
 
 for index, row in df.iterrows():
 
-    Acesso.Tab(9)
+    #Acesso.Tab(8)
 
-    Acesso.Digita('>cainaposen')
+    #Acesso.Digita('>cainaposen')
 
-    Acesso.ViraTelaSiafiTecla('ENTER')
+    #Acesso.ViraTelaSiafiTecla('ENTER')
 
     Acesso.Digita(row['cpf'])
 
@@ -38,7 +38,6 @@ for index, row in df.iterrows():
     Acesso.Tab(1)
 
     Acesso.Digita(row['sexo'])
-    #Acesso.Tab(1)
 
     Acesso.Digita(row['grupo_sanguineo'])
     if len(row['grupo_sanguineo']) < 5:
@@ -62,6 +61,9 @@ for index, row in df.iterrows():
     Acesso.Digita(row['id_tipo_estado_civil'])
     #Acesso.Tab(1)
 
+    # uniao estavel
+    Acesso.Digita('N')
+
     Acesso.Digita(row['cor_origem'])
     #Acesso.Tab(1)
 
@@ -73,11 +75,18 @@ for index, row in df.iterrows():
     #Acesso.Tab(1)
 
     Acesso.Digita(row['id_tipo_nacionalidade'])
+
+    Acesso.Digita('N')
+    #break
     
     Acesso.ViraTelaSiafiTecla('ENTER')
 
+
     ##### SEGUNDA TELA #######
 
+    Acesso.Digita('RG')
+    Acesso.Tab(1)
+    
     Acesso.Digita(row['identidade'])
     Acesso.Tab(1)
 
@@ -119,6 +128,7 @@ for index, row in df.iterrows():
 
     Acesso.Digita(row['nitpis'])
     #Acesso.Tab(11)
+    #break
 
     Acesso.ViraTelaSiafiTecla('ENTER')
 
@@ -126,6 +136,8 @@ for index, row in df.iterrows():
 
     Acesso.Digita(row['endereco_logradouro'])
     Acesso.Tab(1)
+
+    Acesso.Digita('01')
 
     Acesso.Digita(row['endereco_numero'])
     Acesso.Tab(1)
@@ -170,7 +182,7 @@ for index, row in df.iterrows():
         Acesso.Tab(2)
 
     Acesso.Digita(row['email'])
-
+        
     Acesso.ViraTelaSiafiTecla('ENTER')
 
     ##### QUARTA TELA #######

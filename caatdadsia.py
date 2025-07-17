@@ -2,7 +2,7 @@ import MacrosClasses
 import pandas as pd
 
 #df = pd.read_csv('caatdadsia_01_montao.csv', dtype=str, nrows=1)
-df = pd.read_csv('caatdadsia_01_montao.csv', dtype=str)
+df = pd.read_csv('./input/caatdadsia_junho.csv', dtype=str)
 
 df = df.fillna(' ')
 
@@ -10,7 +10,7 @@ Acesso = MacrosClasses.janela3270("Terminal 3270 - A - AWVAKJR7")
 
 for index, row in df.iterrows():
 
-    print('Iniciando matricula:', row['matricula_siapecad'])
+    print('Iniciando matricula:', row['matricula_sigepe'])
 
     #Acesso.Tab(9)
 
@@ -19,7 +19,7 @@ for index, row in df.iterrows():
     #Acesso.ViraTelaSiafiTecla('ENTER')
 
     # MATRICULA SIAPECAD
-    Acesso.Digita(row['matricula_siapecad'])
+    Acesso.Digita(row['matricula_sigepe'])
 
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')
 
@@ -68,6 +68,7 @@ for index, row in df.iterrows():
 
     # CONFIRMACAO
     Acesso.Digita('S')
+    break
 
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')
 
