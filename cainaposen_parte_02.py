@@ -1,7 +1,7 @@
 import MacrosClasses
 import pandas as pd
 
-df = pd.read_csv('./input/cainaposen_junho_2025.csv', dtype=str, nrows=1)
+df = pd.read_csv('./input/cainaposen_set_v3.csv', dtype=str, nrows=1)
 
 df = df.fillna(' ')
 
@@ -27,7 +27,7 @@ for index, row in df.iterrows():
     Acesso.Digita(row['inicio_aposentadoria'])
 
     # Inicio do ultimo Provento -> colocar a data do cargo da pessoa
-    Acesso.Digita('01JAN2025')
+    Acesso.Digita('01JUL2025')
     #break
 
     Tela = Acesso.ViraTelaSiafiTecla('ENTER')
@@ -47,6 +47,7 @@ for index, row in df.iterrows():
     # 617001 - OFICIAL DE INTELIGENCIA
     # 617002 - AGENTE DE INTELIGENCIA
     Acesso.Digita(row['cargo'])
+    #break
 
     # JORNADA DE TRABALHO (valor padrão)
     Acesso.Digita('40')

@@ -4,7 +4,7 @@ import pandas as pd
 
 robo.PAUSE = 0.5
 
-df = pd.read_csv('./input/caatdadbco_junho.csv', dtype=str)
+df = pd.read_csv('./input/caatdadbco_set_v3.csv', dtype=str)
 
 robo.hotkey('alt', 'tab')
 
@@ -21,7 +21,7 @@ for index, row in df.iterrows():
     #robo.moveTo(3180, 530, duration = 0.5)
     
     #ultra wide
-    robo.moveTo(2350, 600, duration = 0.5)
+    robo.moveTo(770, 510, duration = 0.9)
     time.sleep(1)
     robo.leftClick()
 

@@ -1,7 +1,7 @@
 import MacrosClasses
 import pandas as pd
 
-df = pd.read_csv('./input/cainaposen01_julho.csv', dtype=str, nrows=1)
+df = pd.read_csv('./input/cainaposen1_set.csv', dtype=str, nrows=1)
 
 df = df.fillna(' ')
 
@@ -182,6 +182,7 @@ for index, row in df.iterrows():
         Acesso.Tab(2)
 
     Acesso.Digita(row['email'])
+    #break
         
     Acesso.ViraTelaSiafiTecla('ENTER')
 

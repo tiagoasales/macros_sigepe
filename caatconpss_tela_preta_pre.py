@@ -1,7 +1,7 @@
 import MacrosClasses
 
 # MUDAR O CPF AQUI!!!!!!
-cpf = '8821277720'
+cpf = '13145010115'
 
 # completa zero a esqueda
 cpf = cpf.zfill(11)
@@ -26,7 +26,7 @@ Acesso.Tab(1)
 Acesso.Digita("PROVIMENTO")
 Acesso.Tab(1)
 
-Acesso.Digita("01JAN2025")
+Acesso.Digita("01JAN2014")
 Acesso.Digita("534")
 Acesso.Tab(1)
 Acesso.Digita("VACANCIA")
